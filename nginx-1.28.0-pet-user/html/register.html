@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+		<link rel="stylesheet" href="./AmazeUI-2.4.2/assets/css/amazeui.min.css" />
+		<link href="./css/dlstyle.css" rel="stylesheet" type="text/css">
+		<script src="./AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="./AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+
+		<script src="js/plugins/vue/dist/vue.js"></script>
+		<script src="js/plugins/axios/dist/axios.js"></script>
+		<script src="js/plugins/common.js"></script>
+
+	</head>
+
+	<body>
+
+		<div class="login-boxtitle">
+			<a href="home/demo.html"><img alt="" src="./images/logobig.png" /></a>
+		</div>
+
+		<div class="res-banner">
+			<div class="res-main">
+				<div class="login-banner-bg"><span></span><img src="./images/big.jpg" /></div>
+				<div class="login-box">
+
+						<div class="am-tabs" id="doc-my-tabs">
+							<ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+								<li class="am-active"><a href="">邮箱注册</a></li>
+								<li><a href="">手机号注册</a></li>
+							</ul>
+
+							<div class="am-tabs-bd"  id="app">
+								<div class="am-tab-panel am-active">
+									<form method="post">
+										
+							   <div class="user-email">
+										<label for="email"><i class="am-icon-envelope-o"></i></label>
+										<input type="email" name="" id="email" placeholder="请输入邮箱账号">
+                 </div>										
+                 <div class="user-pass">
+								    <label for="password"><i class="am-icon-lock"></i></label>
+								    <input type="password" name="" id="password" placeholder="设置密码">
+                 </div>										
+                 <div class="user-pass">
+								    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
+								    <input type="password" name="" id="passwordRepeat" placeholder="确认密码">
+                 </div>	
+                 
+                 </form>
+                 
+								 <div class="login-links">
+										<label for="reader-me">
+											<input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
+										</label>
+							  	</div>
+										<div class="am-cf">
+											<input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+										</div>
+
+								</div>
+
+								<div class="am-tab-panel">
+									<form method="post">
+                 <div class="user-phone">
+								    <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
+								    <input type="tel" v-model="phoneUserForm.phone" name="" id="phone" placeholder="请输入手机号">
+                 </div>
+										<div class="user-phone">
+											<label for="imageCode"><i class="am-icon-check am-icon-sm"></i></label>
+											<input type="text" name="" style="width: 100px;" v-model="phoneUserForm.imageCode" id="imageCode" placeholder="请输入图片验证码">
+											<span style="align:right;margin-right: -50px;padding-right: -100px">
+												<img id="captcha-image-temp" @click="getImageCode":src="imageCode"  class="captcha-image-temp"  alt="点击换图" title="点击换图" style="height:35px;width: 140px;" >
+											</span>
+												
+											
+										</div>
+
+										<div class="verification">
+											<label for="code"><i class="am-icon-code-fork"></i></label>
+											<input v-model="phoneUserForm.smsCode" type="tel" name="" id="code" placeholder="请输入验证码">
+											<a class="btn" href="javascript:void(0);" @click="sendMobileCode" id="sendMobileCode">
+												<span id="dyMobileButton">获取</span></a>
+										</div>
+                 <div class="user-pass">
+								    <label for="password"><i class="am-icon-lock"></i></label>
+								    <input v-model="phoneUserForm.password" type="password" name="" id="password" placeholder="设置密码">
+                 </div>										
+                 <div class="user-pass">
+								    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
+								    <input type="password" v-model="phoneUserForm.repasswrod" id="passwordRepeat" placeholder="确认密码">
+                 </div>	
+									</form>
+								 <div class="login-links">
+										<label for="reader-me">
+											<input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
+										</label>
+							  	</div>
+										<div class="am-cf">
+											<input type="button" @click="phoneRegister" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+										</div>
+								
+									<hr>
+								</div>
+
+
+
+							</div>
+						</div>
+
+				</div>
+			</div>
+			
+			<div class="footer ">
+						<div class="footer-hd ">
+							<p>
+								<a href="# ">恒望科技</a>
+								<b>|</b>
+								<a href="# ">商城首页</a>
+								<b>|</b>
+								<a href="# ">支付宝</a>
+								<b>|</b>
+								<a href="# ">物流</a>
+							</p>
+						</div>
+						<div class="footer-bd ">
+							<p>
+								<a href="# ">关于恒望</a>
+								<a href="# ">合作伙伴</a>
+								<a href="# ">联系我们</a>
+								<a href="# ">网站地图</a>
+								<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
+							</p>
+						</div>
+					</div>
+		</div>
+	</body>
+
+<script>
+	$(function() {
+		$('#doc-my-tabs').tabs();
+	})
+</script>
+<script type="text/javascript">
+	new Vue({
+		el: "#app",
+		data:{
+			phoneUserForm:{
+				imageCode: '',
+				phone: '',
+				smsCode: '',
+				password: '',
+				repasswrod: '',
+				type: 1 // 用户注册
+			},
+			imageCode: '',
+			imageCodePrefix: 'data:image/jpeg;base64,' // base64位的前缀
+
+		},
+		methods:{
+
+			// 手机号注册：
+			phoneRegister(){
+				this.$http.post("/user/phoneRegister",this.phoneUserForm)
+						.then(resp=>{
+							if(resp.data.success){
+								alert("恭喜注册成功！");
+								// 跳转到登录页面
+								window.location.href = "login.html";
+							}else{
+								alert(resp.data.message);
+							}
+						}).catch(resp=>{
+							alert("网络异常，稍后重试");
+				})
+			},
+
+			// 发送获取短信验证码方法
+			sendMobileCode(){
+				var param = {
+					phone: this.phoneUserForm.phone,
+					imageCode: this.phoneUserForm.imageCode,
+					imageKey: sessionStorage.getItem("registerImageCodeKey")
+				};
+				this.$http.post("/verifyCode/smsCode",param).then(res=>{
+					if(res.data.success){
+						alert(res.data.message);  // 发送成功
+					}else{
+						alert(res.data.message); // 发送失败
+					}
+				}).catch(resp=>{
+					alert("网络异常，稍后重试");
+				})
+
+			},
+
+			createUuid(){
+				var s = [];
+				var hexDigits = "0123456789abcdefghi";
+				for (var i = 0; i < 36; i++) {
+					s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+				}
+				s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+				s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+				s[8] = s[13] = s[18] = s[23] = "-";
+
+				var uuid = s.join("");
+				return uuid;
+			},
+
+			getImageCode(){
+				//发送请求到后台获取数据  VerifycodeController
+				let imageCodeKey = sessionStorage.getItem("registerImageCodeKey");  //key
+				if(!imageCodeKey || imageCodeKey === ''){
+					imageCodeKey = this.createUuid();
+					sessionStorage.setItem("registerImageCodeKey",imageCodeKey);
+				}
+				this.$http.get("/verifyCode/image/"+imageCodeKey).then(res=>{
+
+					this.imageCode = this.imageCodePrefix + res.data.data;
+				})
+			}
+		},
+		mounted(){
+			this.getImageCode();
+		}
+	});
+</script>
+
+</html>

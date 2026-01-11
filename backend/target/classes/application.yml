@@ -11,7 +11,7 @@ mybatis:
   # mapper XML 文件的位置
   mapper-locations: classpath:mapper/*.xml
   # 实体类的别名包
-  type-aliases-package: com.kingbo.demo.entity
+  type-aliases-package: com.kingbo.petserver.entity
   configuration:
     # 开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn
     map-underscore-to-camel-case: true

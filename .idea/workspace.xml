@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bf316f88-5642-4602-9114-2758a1b48a04" name="更改" comment="完成了跨域请求，自定义异常类并处理，部门管理的分页查询和查询子部门，并添加了前台的前端代码和后台的前端代码">
+      <change afterPath="$PROJECT_DIR$/.idea/PetHome-Project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/conf/fastcgi.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/conf/fastcgi_params" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/conf/koi-utf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/conf/koi-win" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/conf/mime.types" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/conf/nginx.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/conf/scgi_params" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/conf/uwsgi_params" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/conf/win-utf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/contrib/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/contrib/geo2nginx.pl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/contrib/unicode2nginx/koi-utf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/contrib/unicode2nginx/unicode-to-nginx.pl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/contrib/unicode2nginx/win-utf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/contrib/vim/ftdetect/nginx.vim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/contrib/vim/ftplugin/nginx.vim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/contrib/vim/indent/nginx.vim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/contrib/vim/syntax/nginx.vim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/CHANGES" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/CHANGES.ru" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/CODE_OF_CONDUCT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/OpenSSL.LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/PCRE.LICENCE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/SECURITY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/docs/zlib.LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/50x.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/css/admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/css/amazeui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/css/amazeui.flat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/css/amazeui.flat.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/css/amazeui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/app-icon72x72@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/admin-chrome.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/admin-firefox.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/admin-ie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/admin-opera.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/admin-safari.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/adminPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/blogPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/landing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/landingPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/loginPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/examples/sidebarPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/i/startup-640x1096.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/js/amazeui.ie8polyfill.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/js/amazeui.ie8polyfill.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/js/amazeui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/js/amazeui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/js/amazeui.widgets.helper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/js/amazeui.widgets.helper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/js/handlebars.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/AmazeUI-2.4.2/assets/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/baidu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/css/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/images/chongzhi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/images/ibar_sprites.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/images/no-img_mid_.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/images/wdsc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/images/weixin_code_145.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/js/jquery-1.7.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/js/jquery-1.9.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/basic/js/quick_links.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/addstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/appstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/bilstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/blogstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/blstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/bostyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/cartstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/cmstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/colstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/cpstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/dlstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/footstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/hmstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/infstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/jsstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/lostyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/newstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/optstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/orstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/personal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/point.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/refstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/seastyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/skin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/sortstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/stepstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/sustyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/vipstyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/css/wallet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/home2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/home3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/introduction.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/pay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/shopcart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/sort.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/home/success.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/-0-saturn_solar.jpg_220x220.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/0-item_pic.jpg_220x220.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/01_mid.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/01_small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/02_mid.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/02_small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/03_mid.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/03_small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/1-item_pic.jpg_220x220.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/1_160x160.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/2016.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/3CoOkxrFOP.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/556.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/557.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/559.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/566.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/566fda5cN4b8a1675.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/62988.jpg_80x80.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/65.jpg_120x120xz.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/72h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/88.jpg_120x120xz.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/T13iv.XiFdXXa94Hfd-32-32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/TB102.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/TB1SSK7JpXXXXXCXXXXXXXXXXXX-800-600.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/TB1_pic.jpg_200x200.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/TJ.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/TJ2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/YXARdXxj5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/act1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/act2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/act3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/activity.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/activity1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/activity2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/activity3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad1-bak.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad2-bak.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad3-bak.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad4-bak.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ad8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/addbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/addicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/addicon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/addicon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/advTip.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/bamboo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/bamboo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/big.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/blog01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/blog02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/blog03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/blog04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/blog05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/blog06.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/blog07.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/blog08.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/blog09.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/bonus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/browse1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/cake.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/cake.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/candy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/candy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/cardbg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/checkbox.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/chocolate.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/chocolate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/chongzhi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/clockbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/combo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/comment.jpg_400x400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/comment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/cookies.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/cookies.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/coupon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/coupon2015.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/coupon20150805.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/couponli.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/cp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/cp2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/day-to.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/extra.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/fish.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/fish.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/getAvatar.do.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/gift_intro_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/gift_stamp_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/gift_stamp_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/gift_stamp_21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/gift_stamp_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/gift_stamp_31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/header-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/header-bg1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/huismall.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/hwbn40x40.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/ibar_sprites.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/icon-sale.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconbig.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconfont-bad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconfont-badon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconfont-evaluate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconfont-good.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconfont-middle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconsmall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconsmall0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconsmall1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconsmall2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/iconsmall3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/imgsearch1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/index_ico_png32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/item-pic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/kouhong.jpg_80x80.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/kuaidi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/list1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/listsmall1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/logo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/logobig.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/logobig1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/logobig2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/logobig_bak.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/mansmall.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/mask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/meat.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/meat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/moneysmall.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/mygift_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/navce.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/navsmall.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/no-img_mid_.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/nut.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/nut.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/package.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/package.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/pay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/peraddbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/peraddress.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/peraddressbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/receive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/refund.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/return-process-cd.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/row1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/row2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/row3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/row4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/sale-t.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/sale-t_clock.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/sale1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/sale2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/sale3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/scoll1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/scoll2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/send.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/songzi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/sprite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/sys_item_selected.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tea.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tea.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tj1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tj2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tw1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tw2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tw3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tw4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tw5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tw6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/tw7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/wallet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/wangyin.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/wdsc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/weixin_code_145.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/weizhifu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/zhifubao.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/images/图标.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/address.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/jquery-1.7.2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/jquery.flexslider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/jquery.imagezoom.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/list.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/UPGRADE_GUIDE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/dist/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/dist/axios.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/dist/axios.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/dist/axios.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/adapters/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/adapters/http.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/adapters/xhr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/cancel/Cancel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/cancel/CancelToken.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/cancel/isCancel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/core/Axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/core/InterceptorManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/core/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/core/createError.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/core/dispatchRequest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/core/enhanceError.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/core/settle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/core/transformData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/defaults.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/bind.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/btoa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/buildURL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/combineURLs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/cookies.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/deprecatedMethod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/isAbsoluteURL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/isURLSameOrigin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/normalizeHeaderName.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/parseHeaders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/helpers/spread.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/lib/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/axios/typings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.common.dev.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.common.prod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.esm.browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.esm.browser.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.esm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.runtime.common.dev.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.runtime.common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.runtime.common.prod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.runtime.esm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.runtime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/dist/vue.runtime.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/codeframe.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/codegen/events.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/codegen/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/create-compiler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/directives/bind.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/directives/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/directives/model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/directives/on.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/error-detector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/optimizer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/parser/entity-decoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/parser/filter-parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/parser/html-parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/parser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/parser/text-parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/compiler/to-function.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/components/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/components/keep-alive.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/global-api/assets.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/global-api/extend.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/global-api/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/global-api/mixin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/global-api/use.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/events.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/inject.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/lifecycle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/proxy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/bind-dynamic-keys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/bind-object-listeners.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/bind-object-props.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/check-keycodes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/render-list.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/render-slot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/render-static.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/resolve-filter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/resolve-scoped-slots.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render-helpers/resolve-slots.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/render.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/instance/state.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/observer/array.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/observer/dep.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/observer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/observer/scheduler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/observer/traverse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/observer/watcher.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/util/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/util/env.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/util/error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/util/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/util/lang.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/util/next-tick.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/util/options.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/util/perf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/util/props.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/create-component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/create-element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/create-functional-component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/helpers/extract-props.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/helpers/get-first-component-child.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/helpers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/helpers/is-async-placeholder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/helpers/merge-hook.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/helpers/normalize-children.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/helpers/normalize-scoped-slots.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/helpers/resolve-async-component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/helpers/update-listeners.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/modules/directives.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/modules/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/modules/ref.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/patch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/core/vdom/vnode.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/directives/html.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/directives/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/directives/model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/directives/text.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/modules/class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/modules/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/modules/model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/modules/style.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/options.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/compiler/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/entry-compiler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/entry-runtime-with-compiler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/entry-runtime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/entry-server-basic-renderer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/entry-server-renderer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/class-util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/components/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/components/transition-group.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/components/transition.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/directives/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/directives/model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/directives/show.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/modules/attrs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/modules/class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/modules/dom-props.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/modules/events.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/modules/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/modules/style.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/modules/transition.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/node-ops.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/patch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/runtime/transition-util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/compiler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/directives/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/directives/model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/directives/show.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/modules/attrs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/modules/class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/modules/dom-props.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/modules/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/modules/style.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/server/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/util/attrs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/util/class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/util/compat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/util/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/util/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/web/util/style.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/directives/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/directives/model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/append.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/props.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/component-root.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/recycle-list.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/text.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/v-bind.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/v-for.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/v-if.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/v-on.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/recycle-list/v-once.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/compiler/modules/style.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/entry-compiler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/entry-framework.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/entry-runtime-factory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/components/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/components/richtext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/components/transition-group.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/components/transition.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/directives/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/modules/attrs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/modules/class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/modules/events.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/modules/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/modules/style.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/modules/transition.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/node-ops.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/patch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/recycle-list/render-component-template.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/recycle-list/virtual-component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/runtime/text-node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/util/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/util/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/platforms/weex/util/parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/bundle-renderer/create-bundle-renderer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/bundle-renderer/create-bundle-runner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/bundle-renderer/source-map-support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/create-basic-renderer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/create-renderer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/optimizing-compiler/codegen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/optimizing-compiler/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/optimizing-compiler/modules.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/optimizing-compiler/optimizer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/optimizing-compiler/runtime-helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/render-context.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/render-stream.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/render.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/template-renderer/create-async-file-mapper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/template-renderer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/template-renderer/parse-template.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/template-renderer/template-stream.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/webpack-plugin/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/webpack-plugin/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/webpack-plugin/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/server/write.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/sfc/parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/shared/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/src/shared/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/types/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/types/options.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/types/plugin.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/types/umd.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/types/vnode.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/plugins/vue/types/vue.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/js/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/address.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/bill.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/billlist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/bindphone.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/blog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/bonus.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/cardlist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/cardmethod.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/change.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/collection.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/comment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/commentlist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/consultation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/coupon.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/foot.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/idcard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/information.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/logistics.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/news.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/orderinfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/pointnew.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/points.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/question.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/record.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/refund.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/safety.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/setpay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/suggest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/wallet.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/person/walletlist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/personCenter.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/pet.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/petDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/publish.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/html/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/logs/nginx.pid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/nginx.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/MarsCodeWorkspaceAppSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/copilot.data.migration.agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/copilot.data.migration.ask.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/copilot.data.migration.edit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/.idea/pethome_admin.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/build/build.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/build/check-versions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/build/dev-client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/build/dev-server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/build/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/build/vue-loader.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/build/webpack.base.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/build/webpack.dev.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/build/webpack.prod.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/config/dev.env.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/config/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/config/prod.env.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/hello.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/api/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/api/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/bg1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/logo4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/alert.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/autocomplete.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/badge.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/breadcrumb-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/breadcrumb.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/button-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/card.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/carousel-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/cascader.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/checkbox-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/checkbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/col.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/collapse-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/collapse.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/color-picker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/date-picker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/dialog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/dropdown-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/dropdown-menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/dropdown.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/fonts/element-icons.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/fonts/element-icons.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/form-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/icon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/input-number.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/input.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/loading.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/menu-item-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/menu-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/message-box.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/message.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/notification.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/option-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/option.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/popover.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/progress.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/radio-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/radio-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/radio.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/rate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/row.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/scrollbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/select-dropdown.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/step.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/steps.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/submenu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/switch.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/tab-pane.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/table-column.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/tag.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/time-picker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/time-select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/tooltip.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/tree.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-darkblue/upload.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/alert.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/autocomplete.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/badge.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/breadcrumb-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/breadcrumb.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/button-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/card.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/carousel-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/cascader.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/checkbox-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/checkbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/col.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/collapse-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/collapse.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/color-picker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/date-picker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/dialog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/dropdown-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/dropdown-menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/dropdown.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/fonts/element-icons.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/fonts/element-icons.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/form-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/icon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/input-number.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/input.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/loading.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/menu-item-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/menu-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/message-box.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/message.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/notification.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/option-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/option.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/popover.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/progress.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/radio-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/radio-group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/radio.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/rate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/row.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/scrollbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/select-dropdown.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/step.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/steps.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/submenu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/switch.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/tab-pane.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/table-column.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/tag.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/time-picker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/time-select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/tooltip.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/tree.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/theme/theme-green/upload.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/assets/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/common/js/permissions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/common/js/quill-config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/common/js/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/components/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/mock/data/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/mock/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/mock/mock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/styles/vars.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/404.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/Home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/Login.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/Main.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/charts/echarts.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/nav1/Form.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/nav1/Table.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/nav1/user.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/nav2/Page4.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/nav2/Page5.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/nav3/Page6.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/org/Department.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/org/Employee.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/org/Shop.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/org/ShopRegister.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/pet/Pet.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/searchMsg/SearchMasterMsgFinish.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/searchMsg/SearchMasterMsgPool.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/searchMsg/SearchMasterMsgToAudit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/searchMsg/SearchMasterMsgTohandle.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/system/Menu.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/system/Permission.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/system/Role.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/system/Systemdictionarydetail.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/views/system/Systemdictionarytype.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/vue_axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/vuex/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/vuex/getters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/src/vuex/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pethome_admin/static/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/66023cb5-8a3a-49d8-93d9-1f24ed4da9e1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/66023cb5-8a3a-49d8-93d9-1f24ed4da9e1/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/66023cb5-8a3a-49d8-93d9-1f24ed4da9e1/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/66023cb5-8a3a-49d8-93d9-1f24ed4da9e1/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/66023cb5-8a3a-49d8-93d9-1f24ed4da9e1/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/mapper/DepartmentDao.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "XiaoyaoLi68"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/XiaoyaoLi68/111.git",
+    "accountId": "f530a7c0-b6d6-4792-9411-75a6b27c0a82"
+  }
+}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="C:\Program Files\apache-maven-3.8.8" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="userSettingsFile" value="C:\Program Files\apache-maven-3.8.8\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="3871cFWja32Mp0whryAmGjLNuva" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.pet-server [clean].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "submit1__backup",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/asus-pc/Desktop/github本地仓库/PetHome-Project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "settings.build.tools.auto.reload": "ALL",
+    "settings.editor.selected.configurable": "build.tools",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="PetServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="pet-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.kingbo.petserver.PetServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/pethome_admin/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="bf316f88-5642-4602-9114-2758a1b48a04" name="更改" comment="" />
+      <created>1765967982952</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1765967982952</updated>
+      <workItem from="1768135875682" duration="407000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="完成了跨域请求，自定义异常类并处理，部门管理的分页查询和查询子部门" />
+    <MESSAGE value="完成了跨域请求，自定义异常类并处理，部门管理的分页查询和查询子部门，并添加了前台的前端代码和后台的前端代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了跨域请求，自定义异常类并处理，部门管理的分页查询和查询子部门，并添加了前台的前端代码和后台的前端代码" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

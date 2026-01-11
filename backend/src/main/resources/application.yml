@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pethome?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+# MyBatis 配置
+mybatis:
+  # mapper XML 文件的位置
+  mapper-locations: classpath:mapper/*.xml
+  # 实体类的别名包
+  type-aliases-package: com.kingbo.petserver.entity
+  configuration:
+    # 开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn
+    map-underscore-to-camel-case: true
+    # 全局地开启或关闭配置文件中的所有映射器已经配置的任何缓存
+    cache-enabled: false
+    # 允许 JDBC 支持自动生成主键，需要数据库驱动支持
+    use-generated-keys: true

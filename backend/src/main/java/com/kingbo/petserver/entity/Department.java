@@ -47,6 +47,9 @@ public class Department implements Serializable {
     private Long parentId;
 
     private Department parent;
+
+    private Employee manager;
+
     private List<Department> children = new ArrayList<>();
 
 }

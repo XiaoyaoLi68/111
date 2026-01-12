@@ -11,6 +11,8 @@
         <result property="managerId" column="manager_id" jdbcType="INTEGER"/>
         <result property="parentId" column="parent_id" jdbcType="INTEGER"/>
         <association property="parent" column="parent_id" select="com.kingbo.petserver.dao.DepartmentDao.queryById"/>
+        <association property="manager" select="com.kingbo.petserver.dao.EmployeeDao.queryById"
+                     column="manager_id"/>
     </resultMap>
 
     <!--查询单个-->

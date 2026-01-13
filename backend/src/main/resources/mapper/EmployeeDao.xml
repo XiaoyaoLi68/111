@@ -13,6 +13,8 @@
         <result property="state" column="state" jdbcType="INTEGER"/>
         <result property="departmentId" column="department_id" jdbcType="INTEGER"/>
         <result property="shopId" column="shop_id" jdbcType="INTEGER"/>
+        <association property="department" select="com.kingbo.petserver.dao.DepartmentDao.queryById" column="department_id"/>
+        <association property="shop" select="com.kingbo.petserver.dao.ShopDao.queryById" column="shop_id"/>
     </resultMap>
 
     <!--查询单个-->
@@ -64,39 +66,12 @@ id, username, phone, email, salt, password, age, state, department_id, shop_id
     </select>
 
     <!--统计总行数-->
-    <select id="count" resultType="java.lang.Long">
-        select count(1)
+    <select id="count" resultMap="EmployeeMap">
+        select *
         from t_employee
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
             <if test="username != null and username != ''">
-                and username = #{username}
-            </if>
-            <if test="phone != null and phone != ''">
-                and phone = #{phone}
-            </if>
-            <if test="email != null and email != ''">
-                and email = #{email}
-            </if>
-            <if test="salt != null and salt != ''">
-                and salt = #{salt}
-            </if>
-            <if test="password != null and password != ''">
-                and password = #{password}
-            </if>
-            <if test="age != null">
-                and age = #{age}
-            </if>
-            <if test="state != null">
-                and state = #{state}
-            </if>
-            <if test="departmentId != null">
-                and department_id = #{departmentId}
-            </if>
-            <if test="shopId != null">
-                and shop_id = #{shopId}
+                username like concat ('%',#{username},'%')
             </if>
         </where>
     </select>
@@ -169,8 +144,15 @@ shop_id = values(shop_id)
     </update>
 
     <!--通过主键删除-->
-    <delete id="deleteById">
+    <delete id="deleteById" >
         delete from t_employee where id = #{id}
+    </delete>
+
+    <delete id="deleteByIds">
+        delete from t_employee where id in
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
     </delete>
 
 </mapper>

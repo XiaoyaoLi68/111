@@ -5,11 +5,13 @@ import com.github.pagehelper.PageInfo;
 import com.kingbo.petserver.dto.PageDto;
 import com.kingbo.petserver.entity.Department;
 import com.kingbo.petserver.dao.DepartmentDao;
+import com.kingbo.petserver.exception.PethomeException;
 import com.kingbo.petserver.service.DepartmentService;
 import com.kingbo.petserver.vo.Result;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,7 +55,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 
     @Override
-    public Result<PageInfo> queryByPage(PageDto pagedto) {
+    public Result<PageInfo<Department>> queryByPage(PageDto pagedto) {
         PageHelper.startPage(pagedto.getCurrentPage(), pagedto.getPageSize());
         List<Department> list = departmentDao.count(pagedto.getKeyword());
         return Result.success(new PageInfo<>(list));
@@ -92,5 +94,32 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public boolean deleteById(Long id) {
         return this.departmentDao.deleteById(id) > 0;
+    }
+
+
+
+
+    @Override
+    @Transactional
+    public Result<String> save(Department department) {
+        if(department.getId() == null){
+            departmentDao.insert(department);
+        }
+        if(department.getParentId() != null){
+            String parentDirPath = departmentDao.queryById(department.getParentId()).getDirPath();
+            department.setDirPath(parentDirPath + "/" + department.getId());
+        }else department.setDirPath("/" + department.getId());
+        departmentDao.update(department);
+        return Result.success("操作成功");
+    }
+
+    @Override
+    @Transactional
+    public Result<String> deleteByIds(List<Long> ids) {
+        if (departmentDao.existByIds(ids)) {
+            PethomeException.throwPetException("所传参数不符合要求");
+        }
+        departmentDao.deleteByIds(ids);
+        return Result.success("删除成功");
     }
 }

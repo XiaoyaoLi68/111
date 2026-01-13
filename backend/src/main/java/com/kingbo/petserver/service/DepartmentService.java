@@ -23,7 +23,7 @@ public interface DepartmentService {
     Result<List<Department>> queryChildren();
 
 
-    Result<PageInfo> queryByPage(PageDto pagedto);
+    Result<PageInfo<Department>> queryByPage(PageDto pagedto);
 
     /**
      * 新增数据
@@ -49,4 +49,9 @@ public interface DepartmentService {
      */
     boolean deleteById(Long id);
 
+
+
+    Result<String> save(Department department);
+
+    Result<String> deleteByIds(List<Long> ids);
 }

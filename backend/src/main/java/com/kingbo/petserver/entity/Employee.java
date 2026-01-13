@@ -1,6 +1,11 @@
 package com.kingbo.petserver.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * (Employee)实体类
@@ -8,6 +13,9 @@ import java.io.Serializable;
  * @author makejava
  * @since 2026-01-12 09:29:30
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee implements Serializable {
     private static final long serialVersionUID = 832780249422182468L;
     /**
@@ -51,86 +59,10 @@ public class Employee implements Serializable {
      */
     private Long shopId;
 
+    private Department department;
 
-    public Long getId() {
-        return id;
-    }
+    private Shop shop;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
-    public Long getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public Long getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(Long shopId) {
-        this.shopId = shopId;
-    }
-
+    private List<Role> roles;
 }
 

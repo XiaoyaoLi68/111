@@ -89,6 +89,7 @@
         <el-form-item label="部门" prop="parent">
           <el-cascader v-model="employee.department"
                        :options="deptTree"
+                       :show-all-levels="false"
                        :props="{
 									checkStrictly: true,
 									label:'name',
@@ -97,12 +98,12 @@
                        clearable></el-cascader>
         </el-form-item>
         <el-form-item label="角色" prop="roles">
-          <el-select v-model="employee.roles" multiple placeholder="请选择">
+          <el-select v-model="employee.roles" multiple placeholder="请选择" value-key="id">
             <el-option
                 v-for="item in roleList"
                 :key="item.id"
                 :label="item.name"
-                :value="item.id">
+                :value="item">
               <span style="float: left">{{ item.name }}</span>
               <span style="float: right; color: #8492a6; font-size: 13px">{{ item.sn }}</span>
             </el-option>
@@ -147,7 +148,7 @@ export default {
           {required: true, message: '请输入邮箱', trigger: 'blur'}
         ],
         password: [
-          {required: true, message: '请输入电话', trigger: 'blur'}
+          {required: true, message: '请输入密码', trigger: 'blur'}
         ]
       },
 
@@ -234,7 +235,16 @@ export default {
       //弹出对话框
       this.employeeFormVisible = true;
       //回显
-      this.employee = Object.assign({}, row);
+      this.employee = Object.assign({}, row, { password: '' });
+      // 现在可以直接赋值对象数组了，因为 HTML 里配置了 value-key="id"
+      // 只有当 row.roles 为 null 时才给空数组，防止报错
+      this.employee.roles = row.roles || [];
+      // 强制把对象变成 ID
+      if (row.department) {
+        this.employee.department = row.department.id;
+      }
+      // 因为修改时密码可以为空，所以需要去掉密码的必填校验
+      this.employeeFormRules.password = [{ required: false, message: '请输入密码', trigger: 'blur' }];
 
     },
     //显示新增界面
@@ -255,6 +265,9 @@ export default {
         department: {},
         roles: null
       };
+      this.employeeFormRules.password = [
+        { required: true, message: '请输入密码', trigger: 'blur' }
+      ];
     },
     //保存
     save: function () {

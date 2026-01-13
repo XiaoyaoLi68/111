@@ -75,5 +75,15 @@ public interface DepartmentDao {
      */
     int deleteById(Long id);
 
+
+
+
+    Boolean existByIds(List<Long> ids);
+
+    void deleteByIds(List<Long> ids);
+
+    void updateNullByManagerId(Long id);
+
+    void updateNullByManagerIds(List<Long> ids);
 }
 

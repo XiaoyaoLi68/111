@@ -5,12 +5,9 @@ import com.kingbo.petserver.dto.PageDto;
 import com.kingbo.petserver.entity.Department;
 import com.kingbo.petserver.service.DepartmentService;
 import com.kingbo.petserver.vo.Result;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import jakarta.annotation.Resource;
 
 import java.util.List;
 
@@ -71,9 +68,20 @@ public class DepartmentController {
 
 
     @PostMapping("queryPage")
-    public Result queryByPage(@RequestBody PageDto pagedto){
+    public Result<PageInfo<Department>> queryByPage(@RequestBody PageDto pagedto){
         return departmentService.queryByPage(pagedto);
     }
 
+
+
+    @PostMapping("save")
+    public Result<String> save(@RequestBody Department department){
+        return departmentService.save(department);
+    }
+
+    @DeleteMapping("delete/{ids}")
+    public Result<String> deleteByIds(@PathVariable List<Long> ids){
+        return departmentService.deleteByIds(ids);
+    }
 }
 

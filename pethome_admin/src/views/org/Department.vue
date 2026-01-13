@@ -300,7 +300,7 @@ export default {
             });
             this.getDepartments();
           } else {
-            this.$message.error("网络异常，稍后重试");
+            this.$message.error(res.data.message);
           }
         });
       }).catch(() => {
@@ -400,7 +400,7 @@ export default {
             });
             this.getDepartments();
           } else {
-            this.$message.error("网络异常，稍后重试");
+            this.$message.error(res.data.message);
           }
         });
       }).catch(() => {

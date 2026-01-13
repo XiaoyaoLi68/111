@@ -1,8 +1,11 @@
 package com.kingbo.petserver.service;
 
+import com.github.pagehelper.PageInfo;
+import com.kingbo.petserver.dto.PageDto;
 import com.kingbo.petserver.entity.Employee;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import com.kingbo.petserver.vo.Result;
+
+import java.util.List;
 
 /**
  * (Employee)表服务接口
@@ -20,14 +23,7 @@ public interface EmployeeService {
      */
     Employee queryById(Long id);
 
-    /**
-     * 分页查询
-     *
-     * @param employee    筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-    Page<Employee> queryByPage(Employee employee, PageRequest pageRequest);
+    Result<PageInfo<Employee>> queryByPage(PageDto pageDto);
 
     /**
      * 新增数据
@@ -35,7 +31,7 @@ public interface EmployeeService {
      * @param employee 实例对象
      * @return 实例对象
      */
-    Employee insert(Employee employee);
+    Result<Employee> insert(Employee employee);
 
     /**
      * 修改数据
@@ -43,7 +39,7 @@ public interface EmployeeService {
      * @param employee 实例对象
      * @return 实例对象
      */
-    Employee update(Employee employee);
+    Result<String> update(Employee employee);
 
     /**
      * 通过主键删除数据
@@ -51,6 +47,9 @@ public interface EmployeeService {
      * @param id 主键
      * @return 是否成功
      */
-    boolean deleteById(Long id);
+    Result<String> deleteById(Long id);
 
+    Result<List<Employee>> queryAll();
+
+    Result<String> deleteByIds(List<Long> ids);
 }

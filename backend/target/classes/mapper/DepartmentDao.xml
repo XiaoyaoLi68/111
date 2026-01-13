@@ -119,6 +119,16 @@
         </set>
         where id = #{id}
     </update>
+    <update id="updateNullByManagerId">
+        update t_department
+        set manager_id = null
+        where manager_id = #{id}
+    </update>
+    <update id="updateNullByManagerIds">
+        update t_department
+        set manager_id = null
+        where manager_id in <foreach collection="ids" item="id" open="(" separator="," close=")">#{id}</foreach>
+    </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">

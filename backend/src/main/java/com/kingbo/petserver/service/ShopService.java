@@ -1,6 +1,7 @@
 package com.kingbo.petserver.service;
 
 import com.kingbo.petserver.entity.Shop;
+import com.kingbo.petserver.vo.Result;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -53,4 +54,7 @@ public interface ShopService {
      */
     boolean deleteById(Long id);
 
+    Result<String> sendMessage(String phone);
+
+    Result<String> onboarding(Shop shop);
 }

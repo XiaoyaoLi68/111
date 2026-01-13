@@ -42,6 +42,9 @@ public class Employee implements Serializable {
      * 密码
      */
     private String password;
+
+
+    private String comfirmPassword;
     /**
      * 年龄
      */
@@ -64,5 +67,7 @@ public class Employee implements Serializable {
     private Shop shop;
 
     private List<Role> roles;
+
+    private Integer verifyCode;
 }
 

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingbo.petserver.dao.ShopAuditLogDao">
+
+    <resultMap type="com.kingbo.petserver.entity.ShopAuditLog" id="ShopAuditLogMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="shopId" column="shop_id" jdbcType="INTEGER"/>
+        <result property="auditId" column="audit_id" jdbcType="INTEGER"/>
+        <result property="auditTime" column="audit_time" jdbcType="TIMESTAMP"/>
+        <result property="note" column="note" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ShopAuditLogMap">
+        select id,
+               state,
+               shop_id,
+               audit_id,
+               audit_time,
+               note
+        from t_shop_audit_log
+        where id = #{id}
+    </select>
+
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from t_shop_audit_log
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="shopId != null">
+                and shop_id = #{shopId}
+            </if>
+            <if test="auditId != null">
+                and audit_id = #{auditId}
+            </if>
+            <if test="auditTime != null">
+                and audit_time = #{auditTime}
+            </if>
+            <if test="note != null and note != ''">
+                and note = #{note}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_shop_audit_log(state, shop_id, audit_id, audit_time, note)
+        values (#{state}, #{shopId}, #{auditId}, #{auditTime}, #{note})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_shop_audit_log(state, shop_id, audit_id, audit_time, note)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.state}, #{entity.shopId}, #{entity.auditId}, #{entity.auditTime}, #{entity.note})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_shop_audit_log(state, shop_id, audit_id, audit_time, note)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.state}, #{entity.shopId}, #{entity.auditId}, #{entity.auditTime}, #{entity.note})
+        </foreach>
+        on duplicate key update
+        state = values(state),
+        shop_id = values(shop_id),
+        audit_id = values(audit_id),
+        audit_time = values(audit_time),
+        note = values(note)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_shop_audit_log
+        <set>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId},
+            </if>
+            <if test="auditId != null">
+                audit_id = #{auditId},
+            </if>
+            <if test="auditTime != null">
+                audit_time = #{auditTime},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from t_shop_audit_log
+        where id = #{id}
+    </delete>
+
+</mapper>
+

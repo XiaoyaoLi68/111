@@ -4,43 +4,26 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43fe0e2-54aa-48b9-8525-4f01688be898" name="更改" comment="完成了查看manager">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/easyCodeTableSettingEncode.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/config/MySwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/controller/RoleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/controller/ShopController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/dao/RoleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/dao/ShopDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/entity/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/entity/Shop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/RoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/ShopService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/impl/ShopServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/mapper/RoleDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/mapper/ShopDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="a43fe0e2-54aa-48b9-8525-4f01688be898" name="更改" comment="完成了部门的增加和删除，并完成了员工的增删改查">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/config/MyRedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/controller/ShopAuditLogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/dao/ShopAuditLogDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/entity/ShopAuditLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/myconst/MyPetHomeConst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/ShopAuditLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/impl/ShopAuditLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/mapper/ShopAuditLogDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/controller/DepartmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/dao/DepartmentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/dao/DepartmentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/dao/EmployeeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/dao/EmployeeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/controller/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/controller/ShopController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/entity/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/DepartmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/impl/DepartmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/impl/DepartmentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/entity/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/entity/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/ShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/ShopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/impl/ShopServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/kingbo/petserver/service/impl/ShopServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/mapper/DepartmentDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/mapper/DepartmentDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/mapper/EmployeeDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/mapper/EmployeeDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/mapper/DepartmentDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/mapper/DepartmentDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx-1.28.0-pet-user/logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-1.28.0-pet-user/logs/nginx.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pethome_admin/src/views/org/Department.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pethome_admin/src/views/org/Department.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pethome_admin/src/views/org/Employee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pethome_admin/src/views/org/Employee.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pethome_admin/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/pethome_admin/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +109,12 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.kingbo.petserver.myconst" />
+      <recent name="com.kingbo.petserver.config" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.PetServerApplication">
     <configuration name="PetServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="pet-server" />
@@ -168,7 +157,7 @@
       <workItem from="1768190055009" duration="385000" />
       <workItem from="1768200618359" duration="23113000" />
       <workItem from="1768266247669" duration="11606000" />
-      <workItem from="1768286290842" duration="17250000" />
+      <workItem from="1768286290842" duration="25226000" />
     </task>
     <task id="LOCAL-00001" summary="完成了查看manager">
       <option name="closed" value="true" />
@@ -178,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768190334702</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完成了部门的增加和删除，并完成了员工的增删改查">
+      <option name="closed" value="true" />
+      <created>1768308390399</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1768308390399</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +183,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成了查看manager" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成了查看manager" />
+    <MESSAGE value="完成了部门的增加和删除，并完成了员工的增删改查" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了部门的增加和删除，并完成了员工的增删改查" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

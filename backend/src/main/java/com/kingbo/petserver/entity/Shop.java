@@ -1,5 +1,9 @@
 package com.kingbo.petserver.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,6 +13,9 @@ import java.io.Serializable;
  * @author makejava
  * @since 2026-01-12 20:18:44
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Shop implements Serializable {
     private static final long serialVersionUID = 301212293811143034L;
 
@@ -42,70 +49,14 @@ public class Shop implements Serializable {
      */
     private Long adminId;
 
+    private Employee admin;
 
-    public Long getId() {
-        return id;
-    }
+    private Double latitude;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Double longitude;
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public Date getRegisterTime() {
-        return registerTime;
-    }
-
-    public void setRegisterTime(Date registerTime) {
-        this.registerTime = registerTime;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    public Long getAdminId() {
-        return adminId;
-    }
-
-    public void setAdminId(Long adminId) {
-        this.adminId = adminId;
-    }
 
 }
 

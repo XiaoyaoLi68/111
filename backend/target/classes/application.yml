@@ -9,6 +9,10 @@ spring:
     url: jdbc:mysql://localhost:3306/pethome?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
     username: root
     password: root
+  data:
+    redis:
+      host: 127.0.0.1
+
 # MyBatis 配置
 mybatis:
   # mapper XML 文件的位置

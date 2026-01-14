@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingbo.petserver.dao.RoleDao">
+
+    <resultMap type="com.kingbo.petserver.entity.Role" id="RoleMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="sn" column="sn" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="RoleMap">
+        select id,
+               name,
+               sn
+        from t_role
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="RoleMap">
+        select
+        id, name, sn
+        from t_role
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="sn != null and sn != ''">
+                and sn = #{sn}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from t_role
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="sn != null and sn != ''">
+                and sn = #{sn}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_role(name, sn)
+        values (#{name}, #{sn})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_role(name, sn)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.sn})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_role(name, sn)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.sn})
+        </foreach>
+        on duplicate key update
+        name = values(name),
+        sn = values(sn)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_role
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="sn != null and sn != ''">
+                sn = #{sn},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from t_role
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteByEmployeeId">
+        delete
+        from t_employee_role
+        where employee_id = #{id}
+    </delete>
+
+    <delete id="deleteByEmployees">
+        delete
+        from t_employee_role
+        where employee_id in <foreach collection="ids" item="id" separator="," close=")" open="(">#{id}</foreach>>
+    </delete>
+
+    <insert id="insertEmployee">
+        insert into t_employee_role (employee_id, role_id) VALUES (#{employeeId},#{rolesId})
+    </insert>
+
+    <update id="updateEmployee">
+        update t_employee_role set role_id = #{rolesId} where employee_id = #{employeeId}
+    </update>
+    <select id="existByEmployeeId" resultType="boolean">
+        SELECT EXISTS(
+            SELECT 1
+            FROM t_employee_role
+            WHERE employee_id = #{employeeId}
+        );
+    </select>
+
+    <select id="queryByEmployeeId" resultType="java.lang.Long">
+            SELECT role_id
+            FROM t_employee_role
+            WHERE employee_id = #{employeeId};
+    </select>
+</mapper>
+

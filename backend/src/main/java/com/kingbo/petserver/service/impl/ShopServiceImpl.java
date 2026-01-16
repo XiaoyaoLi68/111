@@ -329,7 +329,7 @@ public class ShopServiceImpl implements ShopService {
             /*//发邮件
             String to = employeeService.selectEmailByShopId(shopAuditLog.getShopId());
             int code = RandomUtil.randomInt(6);
-            emailUtil.sendHtmlMail(to, "激活店铺", "<a href='http://localhost:8080/org/shop/check/active?id=" + shopAuditLog.getShopId() + "&code=" + code + "'>点击激活您的店铺</a>");
+            emailUtil.sendHtmlMail(to, "激活店铺", "<a href='http://localhost:8080/org/shop/active?id=" + shopAuditLog.getShopId() + "&code=" + code + "'>点击激活您的店铺</a>");
             */return 2;
         }else if(shopAuditLog.getState() == 4){
             return 4;

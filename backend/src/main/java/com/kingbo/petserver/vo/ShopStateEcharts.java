@@ -32,11 +32,11 @@ public class ShopStateEcharts implements Serializable {
         }
         // 根据你的业务定义状态码，这里是个示例：
         switch (auditState) {
-            case "0": return "待审核";
-            case "1": return "待启用";
-            case "2": return "审核拒绝";
+            case "1": return "待审核";
+            case "2": return "待启用";
             case "3": return "已启用";
-            default: return "其他";
+            case "4": return "审核拒绝";
+            default: return "待人工审核";
         }
     }
 }

@@ -1,7 +1,8 @@
 package com.kingbo.petserver.config;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.kingbo.petserver.interceptor.MyInterceptor;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+    @Resource
+    private MyInterceptor myInterceptor;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -32,13 +35,19 @@ public class WebConfig implements WebMvcConfigurer {
                 .maxAge(3600);
     }
 
-  /*  @Override
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(myInteceptor).addPathPatterns("/**");
+        registry.addInterceptor(myInterceptor).addPathPatterns("/**")
+                .excludePathPatterns(          // 排除不需要登录的路径
+                "/login/accountLogin",      // 登录接口不能拦截
+                "/org/shop/fileUpload",         // 图片上传通常不拦截
+                "/org/shop/onboarding",   // 店铺入驻注册也不拦截
+                "org/shop/sendVerifyCode"
+        );
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
-    }*/
+    }
 }

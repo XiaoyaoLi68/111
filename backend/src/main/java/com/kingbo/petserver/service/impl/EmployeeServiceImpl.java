@@ -63,7 +63,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             List<Role> roleList = new ArrayList<>();
             // 必须判空！防止员工没有任何角色时报错
             if (roleIds != null && !roleIds.isEmpty()) {
-                // 循环拿着 ID 去查 Role 对象 (虽然有性能问题，但先保证能跑通)
+                // 循环拿着 ID 去查 Role 对象
                 for (Long rId : roleIds) {
                     Role r = roleDao.queryById(rId);
                     if (r != null) {

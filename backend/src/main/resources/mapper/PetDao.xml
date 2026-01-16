@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingbo.petserver.dao.PetDao">
+
+    <resultMap type="com.kingbo.petserver.entity.Pet" id="PetMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="costprice" column="costprice" jdbcType="VARCHAR"/>
+        <result property="saleprice" column="saleprice" jdbcType="NUMERIC"/>
+        <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+        <result property="resources" column="resources" jdbcType="VARCHAR"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="offsaletime" column="offsaletime" jdbcType="TIMESTAMP"/>
+        <result property="onsaletime" column="onsaletime" jdbcType="TIMESTAMP"/>
+        <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
+        <result property="shopId" column="shop_id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="searchMasterMsgId" column="search_master_msg_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="PetMap">
+        select id,
+               name,
+               costprice,
+               saleprice,
+               type_id,
+               resources,
+               state,
+               offsaletime,
+               onsaletime,
+               createtime,
+               shop_id,
+               user_id,
+               search_master_msg_id
+        from t_pet
+        where id = #{id}
+    </select>
+
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from t_pet
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="costprice != null">
+                and costprice = #{costprice}
+            </if>
+            <if test="saleprice != null">
+                and saleprice = #{saleprice}
+            </if>
+            <if test="typeId != null">
+                and type_id = #{typeId}
+            </if>
+            <if test="resources != null and resources != ''">
+                and resources = #{resources}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="offsaletime != null">
+                and offsaletime = #{offsaletime}
+            </if>
+            <if test="onsaletime != null">
+                and onsaletime = #{onsaletime}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="shopId != null">
+                and shop_id = #{shopId}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="searchMasterMsgId != null">
+                and search_master_msg_id = #{searchMasterMsgId}
+            </if>
+        </where>
+    </select>
+    <select id="queryAllByLimit" resultType="Pet">
+        select *
+        from t_pet
+        <where>
+            <if test="name != null and name != ''">
+                name like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_pet(name, costprice, saleprice, type_id, resources, state, offsaletime, onsaletime, createtime,
+                          shop_id, user_id, search_master_msg_id)
+        values (#{name}, #{costprice}, #{saleprice}, #{typeId}, #{resources}, #{state}, #{offsaletime}, #{onsaletime},
+                #{createtime}, #{shopId}, #{userId}, #{searchMasterMsgId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_pet(name, costprice, saleprice, type_id, resources, state, offsaletime, onsaletime, createtime,
+        shop_id, user_id, search_master_msg_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.costprice}, #{entity.saleprice}, #{entity.typeId}, #{entity.resources},
+            #{entity.state}, #{entity.offsaletime}, #{entity.onsaletime}, #{entity.createtime}, #{entity.shopId},
+            #{entity.userId}, #{entity.searchMasterMsgId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_pet(name, costprice, saleprice, type_id, resources, state, offsaletime, onsaletime, createtime,
+        shop_id, user_id, search_master_msg_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.costprice}, #{entity.saleprice}, #{entity.typeId}, #{entity.resources},
+            #{entity.state}, #{entity.offsaletime}, #{entity.onsaletime}, #{entity.createtime}, #{entity.shopId},
+            #{entity.userId}, #{entity.searchMasterMsgId})
+        </foreach>
+        on duplicate key update
+        name = values(name),
+        costprice = values(costprice),
+        saleprice = values(saleprice),
+        type_id = values(type_id),
+        resources = values(resources),
+        state = values(state),
+        offsaletime = values(offsaletime),
+        onsaletime = values(onsaletime),
+        createtime = values(createtime),
+        shop_id = values(shop_id),
+        user_id = values(user_id),
+        search_master_msg_id = values(search_master_msg_id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_pet
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="costprice != null">
+                costprice = #{costprice},
+            </if>
+            <if test="saleprice != null">
+                saleprice = #{saleprice},
+            </if>
+            <if test="typeId != null">
+                type_id = #{typeId},
+            </if>
+            <if test="resources != null and resources != ''">
+                resources = #{resources},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="offsaletime != null">
+                offsaletime = #{offsaletime},
+            </if>
+            <if test="onsaletime != null">
+                onsaletime = #{onsaletime},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="searchMasterMsgId != null">
+                search_master_msg_id = #{searchMasterMsgId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from t_pet
+        where id = #{id}
+    </delete>
+
+</mapper>
+

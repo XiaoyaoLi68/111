@@ -75,7 +75,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.zxq.myalyossstarter.MyAlyOssStarterApplication</mainClass>
+                    <mainClass>com.kingbo.myalyossstarter.MyAlyOssStarterApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>

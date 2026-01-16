@@ -45,7 +45,7 @@ public class ImportShopListener extends AnalysisEventListener<Shop> {
 
     // 把缓存的数据存储到数据库中
     private void saveData() {
-        // 调用Mapper存储到数据库中
+        // 调用Dao存储到数据库中
         // 把cachedDataList中的数据存储到数据库中
         ShopDao shopDao = SpringContextHolder.getBean(ShopDao.class);
         shopDao.insertBatch(cachedDataList);

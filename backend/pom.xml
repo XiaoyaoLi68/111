@@ -119,7 +119,11 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- JWT Token -->
-
+        <dependency>
+            <groupId>com.kingbo</groupId>
+            <artifactId>MyJwtUtils-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -130,5 +134,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

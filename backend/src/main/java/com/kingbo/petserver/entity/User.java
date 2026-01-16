@@ -7,12 +7,6 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * (User)实体类
- *
- * @author makejava
- * @since 2026-01-15 22:33:54
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -45,7 +39,8 @@ public class User implements Serializable {
 
     private String headimg;
 
-    private Integer type;
+    private Integer Type;
+
 
 }
 

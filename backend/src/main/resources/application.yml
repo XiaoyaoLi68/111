@@ -70,3 +70,7 @@ debug: true
 
 token:
   secret: 12345678901234567890123456789012
+
+jwt:
+  key: bilghsifduhaouihfowhfoeehdsfiuaphewrfpihdsuif
+  hm: 60000000

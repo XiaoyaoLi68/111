@@ -1,12 +1,10 @@
 package com.kingbo.petserver.service.impl;
 
-import cn.hutool.core.date.DateField;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSONObject;
-import cn.hutool.jwt.JWT;
+import com.kingbo.myjwtutilsstarter.MyJwtUtils;
 import com.kingbo.petserver.dao.EmployeeDao;
 import com.kingbo.petserver.dao.UserDao;
 import com.kingbo.petserver.entity.Employee;
@@ -14,10 +12,8 @@ import com.kingbo.petserver.entity.User;
 import com.kingbo.petserver.exception.PethomeException;
 import com.kingbo.petserver.service.LoginService;
 import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,8 +26,8 @@ public class LoginServiceImpl implements LoginService {
     @Resource
     private UserDao userDao;
 
-    @Value("${token.secret}")
-    private String tokenSecret;
+    @Resource
+    private MyJwtUtils myJwtUtils;
 
     // 平台人员/店铺管理人员/用户登录接口
     @Override
@@ -39,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
 
         // 返回的数据
         HashMap<String, String> hashMap = new HashMap<>();
-        String token = null;
+        String token;
         JSONObject jsonObj = null;
         // 校验参数
         if (!ObjectUtil.isAllNotEmpty(user.getUsername(), user.getPassword(), user.getType())) {
@@ -68,13 +64,7 @@ public class LoginServiceImpl implements LoginService {
             PethomeException.throwPetException("用户名或密码错误");
         }
         // 生成Token
-        token = JWT.create()
-                .setKey(tokenSecret.getBytes(StandardCharsets.UTF_8))
-                .setExpiresAt(DateUtil.offset(DateUtil.date(), DateField.HOUR_OF_DAY, 3))
-                .setPayload("username", jsonObj.getStr("username"))
-                .setPayload("id", jsonObj.getLong("id"))
-                .setPayload("phone", jsonObj.getStr("phone"))
-                .sign();
+        token = myJwtUtils.createToken(Map.of("id",jsonObj.getStr("id")));
         // 拼接返回值  token loginInfo
         hashMap.put("token", token);
         hashMap.put("loginInfo", jsonObj.toString());

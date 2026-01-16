@@ -32,7 +32,7 @@ const router = new VueRouter({
 import xxyy from "./vue_axios";
 // 路由的静态资源拦截器
 // 默认是否进入到登录页面
-/*router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
 
     if (to.path == '/login' || to.path == '/shopRegister') {
 
@@ -52,7 +52,7 @@ import xxyy from "./vue_axios";
             next();
         }
     }
-})*/
+})
 
 new Vue({
     //el: '#app',

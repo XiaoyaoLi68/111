@@ -115,7 +115,7 @@
         <!--图片文字自动审核-->
         <dependency>
             <groupId>com.kingbo</groupId>
-            <artifactId>MyOssImageCheckStarter</artifactId>
+            <artifactId>MyOssCheckStarter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- JWT Token -->

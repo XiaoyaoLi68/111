@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   mvc:
-    pathmatch:
+    path match:
       matching-strategy: ant_path_matcher
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -12,6 +12,24 @@ spring:
   data:
     redis:
       host: 127.0.0.1
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: 1873270473@qq.com
+    password: ripjlupkqzxebjjc
+    default-encoding: UTF-8
+    properties:
+      mail:
+            SMTP:
+              auth: true
+              STARTTLS:
+                enable: false  # 465端口不需要starttls
+              ssl:
+                enable: true  # 必须为true
+                required: true
+            transport:
+              protocol: SMTP
+            debug: true  # 查看详细日志
 
 # MyBatis 配置
 mybatis:
@@ -44,3 +62,6 @@ knife4j:
 aly:
   endPoint: https://oss-cn-hangzhou.aliyuncs.com
   bucket: kingbo111
+  sceneList: porn,terrorism,ad,live,logo
+  labelList: spam,politics,abuse,terrorism,porn,flood,contraband,ad
+debug: true

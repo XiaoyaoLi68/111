@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="MyOssImageCheckStarter" />
         <module name="_TestMessage" />
         <module name="pet-server" />
         <module name="MyAlyOssStarter" />
+        <module name="MyOssCheckStarter" />
       </profile>
     </annotationProcessing>
   </component>

@@ -26,17 +26,11 @@ public class EmployeeController {
     @Resource
     private EmployeeService employeeService;
 
-    /**
-     * 分页查询
-     *
-     * @param employee    筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-/*    @GetMapping
-    public ResponseEntity<Page<Employee>> queryByPage(Employee employee, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.employeeService.queryByPage(employee, pageRequest));
-    }*/
+
+    @GetMapping
+    public Result<List<Employee>> queryAllEmployee(){
+        return employeeService.queryAll();
+    }
 
     /**
      * 通过主键查询单条数据
@@ -45,7 +39,7 @@ public class EmployeeController {
      * @return 单条数据
      */
     @GetMapping("{id}")
-    public ResponseEntity<Employee> queryById(@PathVariable("id") Long id) {
+    public ResponseEntity<Employee> queryById(@PathVariable Long id) {
         return ResponseEntity.ok(this.employeeService.queryById(id));
     }
     /**

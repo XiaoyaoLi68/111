@@ -5,7 +5,6 @@
       <database-info product="MySQL" version="8.4.3" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-8.2.0 (Revision: 06a1f724497fd81c6a659131fda822c9e5085b6c)" dbms="MYSQL" exact-version="8.4.3" exact-driver-version="8.2">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
-        <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
@@ -16,6 +15,30 @@
             <name qname="@" />
             <name qname="pethome" />
           </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+    <data-source name="pethome@localhost" uuid="ffe41b53-c9c2-4f39-a01e-7fd7168b2944">
+      <database-info product="MySQL" version="8.4.3" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-8.2.0 (Revision: 06a1f724497fd81c6a659131fda822c9e5085b6c)" dbms="MYSQL" exact-version="8.4.3" exact-driver-version="8.2">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <user-name>root</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="@" />
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+    <data-source name="0@127.0.0.1" uuid="0241f3b7-ebfc-49d3-90b8-a0ff0f6a5503">
+      <database-info product="Redis Standalone" version="3.2.100" jdbc-version="4.2" driver-name="Redis JDBC Driver" driver-version="1.5" dbms="REDIS" exact-version="3.2.100" exact-driver-version="1.5">
+        <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
     </data-source>

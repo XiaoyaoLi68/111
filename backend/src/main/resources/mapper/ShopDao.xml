@@ -30,35 +30,13 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="ShopMap">
         select
-        id, name, tel, register_time, state, address, logo, admin_id
+        *
         from t_shop
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
             <if test="name != null and name != ''">
-                and name = #{name}
-            </if>
-            <if test="tel != null and tel != ''">
-                and tel = #{tel}
-            </if>
-            <if test="registerTime != null">
-                and register_time = #{registerTime}
-            </if>
-            <if test="state != null">
-                and state = #{state}
-            </if>
-            <if test="address != null and address != ''">
-                and address = #{address}
-            </if>
-            <if test="logo != null and logo != ''">
-                and logo = #{logo}
-            </if>
-            <if test="adminId != null">
-                and admin_id = #{adminId}
+                name like concat('%',#{name},'%')
             </if>
         </where>
-        limit #{pageable.offset}, #{pageable.pageSize}
     </select>
 
     <!--统计总行数-->
@@ -92,6 +70,18 @@
             </if>
         </where>
     </select>
+
+    <!-- 根据不同的店铺审核状态 统计每个状态的数量 -->
+    <select id="selectShopGroupState" resultType="com.kingbo.petserver.vo.ShopStateEcharts">
+        SELECT
+            state as auditState,
+            COUNT(id) as stateNum
+        FROM
+            t_shop
+        GROUP BY
+            state
+    </select>
+
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
@@ -153,12 +143,27 @@
         </set>
         where id = #{id}
     </update>
+    <update id="updateStateById">
+        update t_shop set state = #{state} where id = {id}
+    </update>
+
+    <update id="updateAdminIdByAdminId">
+        update t_shop set admin_id = null where admin_id = #{id}
+    </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
         delete
         from t_shop
         where id = #{id}
+    </delete>
+    <delete id="deleteByIds">
+        delete
+        from t_shop
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </delete>
 
 </mapper>

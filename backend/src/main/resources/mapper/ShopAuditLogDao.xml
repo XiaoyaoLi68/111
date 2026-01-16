@@ -100,12 +100,43 @@
         </set>
         where id = #{id}
     </update>
+    <update id="updateByShopId">
+        update t_shop_audit_log
+        <set>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="auditId != null">
+                audit_id = #{auditId},
+            </if>
+            <if test="auditTime != null">
+                audit_time = #{auditTime},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note},
+            </if>
+        </set>
+        where shop_id = #{shopId}
+    </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
         delete
         from t_shop_audit_log
         where id = #{id}
+    </delete>
+    <delete id="deleteByShopId">
+        delete
+        from t_shop_audit_log
+        where shop_id = #{id}
+    </delete>
+    <delete id="deleteByShopIds">
+        delete
+        from t_shop_audit_log
+        where shop_id in
+        <foreach collection="ids" item="id" separator="," close=")" open="(">
+            #{id}
+        </foreach>
     </delete>
 
 </mapper>

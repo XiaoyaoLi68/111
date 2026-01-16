@@ -57,11 +57,11 @@
       </el-table-column>
       <el-table-column prop="state" label="状态" width="80" sortable>
         <template scope="scope">
-          <span v-if="scope.row.state==0" style="color: darkgrey">待审核</span>
-          <span v-if="scope.row.state==1" style="color: darkorange">审核通过待激活</span>
-          <span v-if="scope.row.state==2" style="color: red">审核拒绝</span>
-          <span v-if="scope.row.state==3" style="color: darkorchid">等待人工审核</span>
-          <span v-if="scope.row.state==4" style="color: green">已激活</span>
+          <span v-if="scope.row.state==1" style="color: darkgrey">待审核</span>
+          <span v-if="scope.row.state==2" style="color: darkorange">审核通过待激活</span>
+          <span v-if="scope.row.state==4" style="color: red">审核拒绝</span>
+          <span v-if="scope.row.state==5" style="color: darkorchid">等待人工审核</span>
+          <span v-if="scope.row.state==3" style="color: green">已激活</span>
         </template>
       </el-table-column>
       <el-table-column prop="address" label="地址" min-width="120" sortable>
@@ -104,7 +104,7 @@
         <el-form-item label="联系电话" prop="tel">
           <el-input v-model="shop.tel" auto-complete="off"></el-input>
         </el-form-item>
-        <el-form-item label="状态">
+<!--        <el-form-item label="状态">
           <el-radio-group v-model="shop.state">
             <el-radio class="radio" :label="0">待审核</el-radio>
             <el-radio class="radio" :label="1">审核通过待激活</el-radio>
@@ -112,7 +112,7 @@
             <el-radio class="radio" :label="3">等待人工审核</el-radio>
             <el-radio class="radio" :label="4">已激活</el-radio>
           </el-radio-group>
-        </el-form-item>
+        </el-form-item>-->
         <el-form-item label="地址" prop="address">
           <el-input v-model="shop.address" auto-complete="off"></el-input>
         </el-form-item>
@@ -120,14 +120,14 @@
           <el-input v-model="shop.logo" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="店长">
-          <el-select v-model="shop.employee" placeholder="请选择" value-key="id">
+          <el-select v-model="shop.admin" placeholder="请选择" value-key="id">
             <el-option
                 v-for="employee in employees"
                 :key="employee.id"
                 :label="employee.username"
                 :value="employee">
               <span style="float: left">{{ employee.username }}</span>
-              <span style="float: right; color: #8492a6; font-size: 13px">{{ employee.department.name }}</span>
+<!--              <span style="float: right; color: #8492a6; font-size: 13px">{{ employee.department.name }}</span>-->
             </el-option>
           </el-select>
         </el-form-item>
@@ -176,7 +176,7 @@ export default {
       query: {
         currentPage: 1,
         pageSize: 5,
-        params: {}  // 条件
+        keyword: ''  // 条件
       },
       listLoading: false,
       sels: [],//列表选中列
@@ -410,7 +410,7 @@ export default {
     getEmployees() {
       this.$http.get("/org/employee").then(res => {
         if (res) {
-          this.employees = res.data
+          this.employees = res.data.data;
         }
       })
     },

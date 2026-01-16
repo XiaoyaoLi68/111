@@ -37,7 +37,8 @@
       <el-table-column prop="state" label="状态" width="100" sortable>
         <template scope="scope">
           <span style="color: green" v-if="scope.row.state==0">禁用</span>
-          <span style="color: red" v-else="scope.row.state==-1">启用</span>
+          <span style="color: red" v-else-if="scope.row.state==1">启用</span>
+          <span v-else>未知</span>
         </template>
       </el-table-column>
       <el-table-column label="操作" min-width="120">
@@ -58,11 +59,8 @@
       </el-pagination>
     </el-col>
 
-    <!--编辑界面
-        v-model="editFormVisible" 老版本打开对话框
-    -->
+    <!--编辑界面-->
     <el-dialog :title="title" :visible.sync="employeeFormVisible" :close-on-click-modal="false">
-      <!--ref="employeeForm" 指定表单名称，以后可以通过this.$refs.employeeForm-->
       <el-form :model="employee" label-width="80px" :rules="employeeFormRules" ref="employeeForm">
         <el-form-item label="用户名" prop="username">
           <el-input v-model="employee.username" auto-complete="off"></el-input>
@@ -86,24 +84,25 @@
           </el-radio-group>
         </el-form-item>
 
-        <el-form-item label="部门" prop="parent">
+        <el-form-item label="部门" prop="department">
           <el-cascader v-model="employee.department"
                        :options="deptTree"
-                       :show-all-levels="false"
                        :props="{
-									checkStrictly: true,
-									label:'name',
-									value:'id'
-							    }"
+                          checkStrictly: true,
+                          label:'name',
+                          value:'id',
+                          children: 'children',
+                          emitPath: true
+                       }"
                        clearable></el-cascader>
         </el-form-item>
         <el-form-item label="角色" prop="roles">
-          <el-select v-model="employee.roles" multiple placeholder="请选择" value-key="id">
+          <el-select v-model="employee.roles" multiple placeholder="请选择">
             <el-option
                 v-for="item in roleList"
                 :key="item.id"
                 :label="item.name"
-                :value="item">
+                :value="item.id">
               <span style="float: left">{{ item.name }}</span>
               <span style="float: right; color: #8492a6; font-size: 13px">{{ item.sn }}</span>
             </el-option>
@@ -151,8 +150,6 @@ export default {
           {required: true, message: '请输入密码', trigger: 'blur'}
         ]
       },
-
-      //编辑界面数据
       employee: {
         id: null,
         username: '',
@@ -161,100 +158,17 @@ export default {
         password: '',
         age: 0,
         state: 1,
-        department: {},
-        roles: null
+        department: [],
+        roles: []
       },
       deptTree: [],
       roleList: []
     }
   },
   methods: {
-    getDeptTree() {
-      this.$http.get("/org/dept/tree")
-          .then(result => {
-            this.deptTree = result.data.data;
-          })
-    },
-    search() {
-      //修改页码
-      this.query.currentPage = 1;
-      //改查询条件=双向绑定输入时自动改变，只需要重新查询一次就ok
-      this.getEmployees();
-    },
-    handleCurrentChange(val) {
-      this.query.currentPage = val;
-      this.getEmployees();
-    },
-    //获取用户列表
-    getEmployees() {
-      this.listLoading = true; //加载条
-      this.$http.post("/org/employee/queryPage", this.query)
-          .then(result => {
-            this.pageData.total = result.data.data.total;
-            this.pageData.rows = result.data.data.list;
-            this.listLoading = false; //去除加载条
-          })
-          .catch(result => {
-            alert("抱错了！");
-          })
-
-    },
-    //删除
-    handleDel: function (index, row) {
-      this.$confirm('确认删除该记录吗?', '温馨提示', {
-        type: 'warning'
-      }).then(() => {
-        this.listLoading = true;
-        let url = "/org/employee/" + row.id;
-        this.$http.delete(url)
-            .then((result) => {
-              console.log(result)
-              result = result.data; //{sucesss:true,message:"xx"}
-              this.listLoading = false;
-              if (result.success) { //成功提示
-                this.$message({
-                  message: '删除成功',
-                  type: 'success'
-                });
-              } else {
-                this.$message({ //错误提示
-                  message: result.message,
-                  type: 'error'
-                });
-              }
-              //重新加载数据
-              this.getEmployees();
-            });
-      }).catch(() => {
-      });
-    },
-    //显示编辑界面
-    handleEdit: function (index, row) {
-      //修改对话框标题
-      this.title = "修改员工"
-      //弹出对话框
-      this.employeeFormVisible = true;
-      //回显
-      this.employee = Object.assign({}, row, { password: '' });
-      // 现在可以直接赋值对象数组了，因为 HTML 里配置了 value-key="id"
-      // 只有当 row.roles 为 null 时才给空数组，防止报错
-      this.employee.roles = row.roles || [];
-      // 强制把对象变成 ID
-      if (row.department) {
-        this.employee.department = row.department.id;
-      }
-      // 因为修改时密码可以为空，所以需要去掉密码的必填校验
-      this.employeeFormRules.password = [{ required: false, message: '请输入密码', trigger: 'blur' }];
-
-    },
-    //显示新增界面
-    handleAdd: function () {
-      //修改对话框标题
-      this.title = "添加员工"
-      //弹出对话框
-      this.employeeFormVisible = true;
-      //置空数据，防止先点修改，后点添加有值
-      this.employee = {
+    // 初始化员工数据
+    initEmployeeData() {
+      return {
         id: null,
         username: '',
         phone: '',
@@ -262,58 +176,252 @@ export default {
         password: '',
         age: 0,
         state: 1,
-        department: {},
-        roles: null
+        department: [],
+        roles: []
       };
-      this.employeeFormRules.password = [
-        { required: true, message: '请输入密码', trigger: 'blur' }
-      ];
     },
-    //保存
-    save: function () {
+
+    // 获取部门树
+    getDeptTree() {
+      this.$http.get("/org/dept/tree")
+          .then(result => {
+            this.deptTree = result.data.data;
+          })
+          .catch(error => {
+            console.error("获取部门树失败:", error);
+          });
+    },
+
+    // 获取角色列表
+    getRoleList() {
+      this.$http.get("/system/role/queryAll")
+          .then(result => {
+            if (result.data) {
+              this.roleList = result.data.data;
+            }
+          })
+          .catch(error => {
+            console.error("获取角色列表失败:", error);
+          });
+    },
+
+    // 查询
+    search() {
+      this.query.currentPage = 1;
+      this.getEmployees();
+    },
+
+    // 分页切换
+    handleCurrentChange(val) {
+      this.query.currentPage = val;
+      this.getEmployees();
+    },
+
+    // 获取员工列表（这是缺少的方法）
+    getEmployees() {
+      this.listLoading = true;
+      this.$http.post("/org/employee/queryPage", this.query)
+          .then(result => {
+            this.pageData.total = result.data.data.total;
+            this.pageData.rows = result.data.data.list;
+            this.listLoading = false;
+          })
+          .catch(error => {
+            console.error("获取员工列表失败:", error);
+            this.listLoading = false;
+            this.$message({
+              message: '加载数据失败',
+              type: 'error'
+            });
+          });
+    },
+
+    // 获取部门路径
+    getDepartmentPath(deptId) {
+      const findPath = (tree, id, path = []) => {
+        for (let node of tree) {
+          if (node.id === id) {
+            path.push(node.id);
+            return path;
+          }
+          if (node.children && node.children.length) {
+            const found = findPath(node.children, id, [...path, node.id]);
+            if (found.length) {
+              return found;
+            }
+          }
+        }
+        return [];
+      };
+
+      return findPath(this.deptTree, deptId);
+    },
+
+    // 删除
+    handleDel(index, row) {
+      this.$confirm('确认删除该记录吗?', '温馨提示', {
+        type: 'warning'
+      }).then(() => {
+        this.listLoading = true;
+        let url = "/org/employee/" + row.id;
+        this.$http.delete(url)
+            .then((result) => {
+              this.listLoading = false;
+              result = result.data;
+              if (result.success) {
+                this.$message({
+                  message: '删除成功',
+                  type: 'success'
+                });
+                this.getEmployees();
+              } else {
+                this.$message({
+                  message: result.message,
+                  type: 'error'
+                });
+              }
+            })
+            .catch(error => {
+              this.listLoading = false;
+              this.$message({
+                message: '删除失败',
+                type: 'error'
+              });
+            });
+      }).catch(() => {
+        // 用户取消删除
+      });
+    },
+
+    // 显示编辑界面（修复了回显问题）
+    handleEdit(index, row) {
+      this.title = "修改员工";
+      this.employeeFormVisible = true;
+      this.employeeFormRules.password = [{ required: false, message: '请输入密码', trigger: 'blur' }];
+
+      // 等待DOM更新后设置数据
+      this.$nextTick(() => {
+        // 重置表单验证
+        if (this.$refs.employeeForm) {
+          this.$refs.employeeForm.clearValidate();
+        }
+
+        // 设置基本数据
+        this.employee = {
+          id: row.id,
+          username: row.username,
+          phone: row.phone,
+          email: row.email,
+          password: '', // 编辑时不显示原密码
+          age: row.age || 0,
+          state: row.state || 1,
+          department: [],
+          roles: []
+        };
+
+        // 部门回显
+        if (row.department && row.department.id) {
+          const path = this.getDepartmentPath(row.department.id);
+          this.employee.department = path.length ? path : [row.department.id];
+        }
+
+        // 角色回显
+        if (row.roles && Array.isArray(row.roles)) {
+          this.employee.roles = row.roles.map(role => role.id);
+        }
+
+      });
+
+    },
+
+    // 显示新增界面
+    handleAdd() {
+      this.title = "添加员工";
+      this.employeeFormVisible = true;
+      this.employeeFormRules.password = [{ required: true, message: '请输入密码', trigger: 'blur' }];
+
+      this.$nextTick(() => {
+        // 重置表单
+        this.employee = this.initEmployeeData();
+        if (this.$refs.employeeForm) {
+          this.$refs.employeeForm.resetFields();
+          this.$refs.employeeForm.clearValidate();
+        }
+      });
+    },
+
+    // 保存
+    save() {
       this.$refs.employeeForm.validate((valid) => {
         if (valid) {
           this.$confirm('确认保存吗？', '提示', {}).then(() => {
             this.employeeLoading = true;
             let para = Object.assign({}, this.employee);
-            console.log(this.employee.department)
-            //处理上级员工参数格式 parent:[1,34]---->parent:{id:34}
-            let departmentArr = para.department;
-            if (departmentArr) {
-              para.department = {"id": departmentArr[departmentArr.length - 1]}
+
+            // 处理部门参数：数组转对象
+            if (para.department && Array.isArray(para.department)) {
+              const deptId = para.department[para.department.length - 1];
+              para.department = deptId ? {id: deptId} : null;
             }
-            this.$http.put("/org/employee", para)
+
+            // 处理角色参数：数组转对象数组
+            if (para.roles && Array.isArray(para.roles)) {
+              para.roles = para.roles.map(roleId => ({id: roleId}));
+            }
+
+            // 根据是否有ID决定是新增还是修改
+            const url = "/org/employee";
+            const method = para.id ? "put" : "post";
+
+            this.$http[method](url, para)
                 .then((result) => {
                   this.employeeLoading = false;
                   result = result.data;
                   if (result.success) {
                     this.$message({
-                      message: '提交成功',
+                      message: para.id ? '修改成功' : '添加成功',
                       type: 'success'
                     });
-                    this.employeeFormVisible = false; //关闭对话框
-                    this.$refs['employeeForm'].resetFields();//重置表单
-                    this.getEmployees(); //重新加载
+                    this.employeeFormVisible = false;
+                    this.employee = this.initEmployeeData();
+                    this.getEmployees();
                   } else {
                     this.$message({
-                      message: result.message,
+                      message: result.message || '操作失败',
                       type: 'error'
                     });
-                    //失败了可能修改了提交
                   }
+                })
+                .catch(error => {
+                  this.employeeLoading = false;
+                  this.$message({
+                    message: '保存失败，请检查网络或服务器',
+                    type: 'error'
+                  });
                 });
+          }).catch(() => {
+            // 用户取消保存
           });
         }
       });
     },
-    selsChange: function (sels) {
+
+    // 选择变化
+    selsChange(sels) {
       this.sels = sels;
-      console.log(this.sels)
     },
-    //批量删除
-    batchRemove: function () {
-      //遍历选择记录把id放到一个数组中
-      var ids = this.sels.map(item => item.id); //[1,2,3]
+
+    // 批量删除
+    batchRemove() {
+      if (this.sels.length === 0) {
+        this.$message({
+          message: '请先选择要删除的记录',
+          type: 'warning'
+        });
+        return;
+      }
+
+      var ids = this.sels.map(item => item.id);
       this.$confirm('确认删除选中记录吗？', '温馨提示', {
         type: 'warning'
       }).then(() => {
@@ -327,26 +435,37 @@ export default {
                   message: '删除成功',
                   type: 'success'
                 });
+                // 跳转到第一页
+                this.query.currentPage = 1;
+                this.getEmployees();
               } else {
                 this.$message({
-                  message: result.message,
+                  message: result.message || '删除失败',
                   type: 'error'
                 });
               }
-              //跳转到第一页
-              this.handleCurrentChange(1);
+            })
+            .catch(error => {
+              this.listLoading = false;
+              this.$message({
+                message: '删除失败',
+                type: 'error'
+              });
             });
       }).catch(() => {
-
+        // 用户取消删除
       });
-    },
-    getRoleList() {
-      this.$http.get("/system/role/queryAll")
-          .then(result => {
-            if (result.data) {
-              this.roleList = result.data.data;
-            }
-          })
+    }
+  },
+  watch: {
+    employeeFormVisible(newVal) {
+      if (!newVal) {
+        // 对话框关闭时重置数据
+        this.employee = this.initEmployeeData();
+        if (this.$refs.employeeForm) {
+          this.$refs.employeeForm.clearValidate();
+        }
+      }
     }
   },
   mounted() {
@@ -355,9 +474,10 @@ export default {
     this.getRoleList();
   }
 }
-
 </script>
 
 <style scoped>
-
+.toolbar {
+  padding: 10px;
+}
 </style>

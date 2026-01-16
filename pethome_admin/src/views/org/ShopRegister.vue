@@ -248,16 +248,22 @@ export default {
       this.dialogVisable = false;
     },
     selectAdrressConfirm() {
-      //获取值搜索框值,设置给地址
       var searchInputV = document.getElementById("searchInput").value;
       this.shop.address = searchInputV;
-      // 同时保存经纬度
+
+      // 检查是否有经纬度
       if (this.selectedLng && this.selectedLat) {
         this.shop.longitude = this.selectedLng;
         this.shop.latitude = this.selectedLat;
+        this.dialogVisable = false; // 只有选好了才关闭
+      } else {
+        // 提示用户必须选点
+        this.$message({
+          message: '系统未获取到经纬度，请在下拉列表中选中一项，或在地图上点击一个点！',
+          type: 'warning'
+        });
+        // 不关闭对话框，让用户继续选
       }
-      //关闭对话框
-      this.dialogVisable = false;
     },
     selectAdrress() {
       this.dialogVisable = true;
@@ -305,57 +311,49 @@ export default {
       console.log(file);
     },
     //提交入驻
+    // 修改你的 settledIn 方法
     settledIn() {
       this.$refs.shopForm.validate((valid) => {
-        //校验表单成功后才做一下操作
         if (valid) {
-          // 检查是否选择了地址并获取了经纬度
-          /*if (!this.shop.longitude || !this.shop.latitude) {
+          // 1. 恢复校验：必须检查经纬度是否有值
+          // 如果经纬度为空，说明用户只填了字，没选点，或者地图组件没加载好
+          if (!this.shop.longitude || !this.shop.latitude) {
             this.$message({
-              message: '请选择店铺地址并确保获取到经纬度信息!',
+              message: '请点击"选择"按钮，并在地图中点击确切位置或从下拉列表中选择地址！',
               type: 'warning'
             });
             return;
-          }*/
+          }
 
           this.$confirm('确认入驻吗？', '提示', {}).then(() => {
-            //拷贝后面对象的值到新对象,防止后面代码改动引起模型变化
-            let para = Object.assign({}, this.shop); // shop 本身这个参数里面就有店铺和管理员信息，现在包含经纬度和验证码
+            let para = Object.assign({}, this.shop);
 
-            // 确保经纬度是数字类型
-            para.longitude = parseFloat(para.longitude);
-            para.latitude = parseFloat(para.latitude);
-            if(para.logo.data){
+            // 2. 安全转换：虽然上面校验过了，但为了保险，做个判断
+            para.longitude = para.longitude ? parseFloat(para.longitude) : null;
+            para.latitude = para.latitude ? parseFloat(para.latitude) : null;
+
+            // 你的Logo处理逻辑保持不变
+            if(para.logo && para.logo.data){
               para.logo = para.logo.data;
             }
-            //alert(JSON.stringify(para.logo))
-            console.log('提交的数据:', para); // 调试用，查看提交的数据
 
-            // 为了后台好接收，封装一个对象放到里面
-            //判断是否有id有就是修改,否则就是添加
+            console.log('提交的数据:', para);
+
             this.$http.post("/org/shop/onboarding", para).then((res) => {
+              // ... 你的成功回调逻辑保持不变
               if (res.data.success) {
-                this.$message({
-                  message: '操作成功!',
-                  type: 'success'
-                });
-                //重置表单
+                this.$message({ message: '操作成功!', type: 'success' });
                 this.$refs['shopForm'].resetFields();
-                // 清除经纬度
-                this.selectedLng = '';
-                this.selectedLat = '';
+                // 记得手动清空自定义的字段
                 this.shop.longitude = '';
                 this.shop.latitude = '';
+                this.selectedLng = ''; // 也要清空临时变量
+                this.selectedLat = '';
                 this.shop.logo = '';
-                //跳转登录页面
                 this.$router.push({path: '/login'});
               } else {
-                this.$message({
-                  message: res.data.message,
-                  type: 'error'
-                });
+                this.$message({ message: res.data.message, type: 'error' });
               }
-
             });
           });
         }

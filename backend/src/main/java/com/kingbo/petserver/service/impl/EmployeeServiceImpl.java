@@ -187,6 +187,32 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public String findEmailByShopId(Long shopId) {
+       return employeeDao.findEmailByShopId(shopId);
+    }
+
+    @Override
+    public void updateShopIdNullById(Long adminId) {
+        employeeDao.updateShopIdNullById(adminId);
+    }
+
+    @Override
+    public void updateShopIdById(Long adminId, Long id) {
+        employeeDao.updateShopIdById(adminId,id);
+    }
+
+    @Override
+    public void updateShopIdNullByShopId(Long id) {
+        employeeDao.updateShopIdNullByShopId(id);
+    }
+
+    @Override
+    public void updateShopIdNullByShopIds(List<Long> ids) {
+        employeeDao.updateShopIdNullByShopIds(ids);
+    }
+
+
+    @Override
     public Result<List<Employee>> queryAll() {
         return Result.success(employeeDao.queryAll());
     }

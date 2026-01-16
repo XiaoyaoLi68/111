@@ -52,4 +52,16 @@ public interface EmployeeService {
     Result<List<Employee>> queryAll();
 
     Result<String> deleteByIds(List<Long> ids);
+
+    String findEmailByShopId(Long shopId);
+
+
+    void updateShopIdNullById(Long adminId);
+
+
+    void updateShopIdById(Long adminId, Long id);
+
+    void updateShopIdNullByShopId(Long id);
+
+    void updateShopIdNullByShopIds(List<Long> ids);
 }

@@ -82,5 +82,17 @@ public interface EmployeeDao {
 
     int deleteByIds(List<Long> ids);
 
+    String findEmailByShopId(Long shopId);
+
+    void updateShopIdNullById(Long adminId);
+
+
+    void updateShopIdById(@Param("adminId") Long adminId, @Param("id") Long id);
+
+    void updateShopIdNullByShopId(Long id);
+
+    void updateShopIdNullByShopIds(@Param("ids") List<Long> ids);
+
+    Employee selectEmpByUsername(String username);
 }
 

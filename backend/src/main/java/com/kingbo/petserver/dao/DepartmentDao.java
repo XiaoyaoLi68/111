@@ -78,12 +78,12 @@ public interface DepartmentDao {
 
 
 
-    Boolean existByIds(List<Long> ids);
+    Boolean existByIds(@Param("ids") List<Long> ids);
 
-    void deleteByIds(List<Long> ids);
+    void deleteByIds(@Param("ids") List<Long> ids);
 
     void updateNullByManagerId(Long id);
 
-    void updateNullByManagerIds(List<Long> ids);
+    void updateNullByManagerIds(@Param("ids") List<Long> ids);
 }
 

@@ -75,6 +75,12 @@ id, username, phone, email, salt, password, age, state, department_id, shop_id
             </if>
         </where>
     </select>
+    <select id="findEmailByShopId" resultType="string">
+        select email from t_employee where shop_id = #{shopId}
+    </select>
+    <select id="selectEmpByUsername" resultType="com.kingbo.petserver.entity.Employee">
+        select * from t_employee where username = #{username}
+    </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
@@ -141,6 +147,25 @@ shop_id = values(shop_id)
             </if>
         </set>
         where id = #{id}
+    </update>
+
+
+    <update id="updateShopIdNullById">
+        update t_employee set shop_id = null where id = #{id}
+    </update>
+
+    <update id="updateShopIdById">
+        update t_employee set shop_id = {shopId} where id = #{id}
+    </update>
+
+    <update id="updateShopIdNullByShopId">
+        update t_employee set shop_id = null where shop_id = #{id}
+    </update>
+    <update id="updateShopIdNullByShopIds">
+        update t_employee set shop_id = null where shop_id in
+                                             <foreach collection="ids" open="(" close=")" separator="," item="id">
+                                                 #{id}
+                                             </foreach>
     </update>
 
     <!--通过主键删除-->

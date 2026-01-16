@@ -99,6 +99,6 @@ public interface RoleDao {
 
     void deleteByEmployeeId(Long id);
 
-    void deleteByEmployees(List<Long> ids);
+    void deleteByEmployees(@Param("ids") List<Long> ids);
 }
 

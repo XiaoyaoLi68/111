@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingbo.petserver.dao.UserDao">
+
+    <resultMap type="com.kingbo.petserver.entity.User" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="salt" column="salt" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
+        <result property="headimg" column="headImg" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserMap">
+        select id,
+               username,
+               phone,
+               email,
+               salt,
+               password,
+               state,
+               age,
+               createtime,
+               headImg
+        from t_user
+        where id = #{id}
+    </select>
+
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from t_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+            <if test="salt != null and salt != ''">
+                and salt = #{salt}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="headimg != null and headimg != ''">
+                and headImg = #{headimg}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByUsername" resultType="com.kingbo.petserver.entity.User">
+        select *
+        from t_user
+        where username = #{username}
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_user(username, phone, email, salt, password, state, age, createtime, headImg)
+        values (#{username}, #{phone}, #{email}, #{salt}, #{password}, #{state}, #{age}, #{createtime}, #{headimg})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_user(username, phone, email, salt, password, state, age, createtime, headImg)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.username}, #{entity.phone}, #{entity.email}, #{entity.salt}, #{entity.password}, #{entity.state},
+            #{entity.age}, #{entity.createtime}, #{entity.headimg})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into t_user(username, phone, email, salt, password, state, age, createtime, headImg)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.username}, #{entity.phone}, #{entity.email}, #{entity.salt}, #{entity.password}, #{entity.state},
+            #{entity.age}, #{entity.createtime}, #{entity.headimg})
+        </foreach>
+        on duplicate key update
+        username = values(username),
+        phone = values(phone),
+        email = values(email),
+        salt = values(salt),
+        password = values(password),
+        state = values(state),
+        age = values(age),
+        createtime = values(createtime),
+        headImg = values(headImg)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_user
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="salt != null and salt != ''">
+                salt = #{salt},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="headimg != null and headimg != ''">
+                headImg = #{headimg},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from t_user
+        where id = #{id}
+    </delete>
+
+</mapper>
+

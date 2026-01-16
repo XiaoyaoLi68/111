@@ -70,5 +70,10 @@ public interface ShopAuditLogDao {
      */
     int deleteById(Long id);
 
+    void updateByShopId(ShopAuditLog shopAuditLog);
+
+    void deleteByShopId(Long id);
+
+    void deleteByShopIds(@Param("ids") List<Long> ids);
 }
 

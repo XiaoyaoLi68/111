@@ -2,26 +2,33 @@ package com.kingbo.petserver.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.SecureUtil;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONPath;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.kingbo.myossimagecheckstarter.utils.MyContextCheckUtils;
+import com.kingbo.myossimagecheckstarter.utils.MyImageCheckUtils;
 import com.kingbo.petserver.dao.ShopAuditLogDao;
 import com.kingbo.petserver.dao.ShopDao;
+import com.kingbo.petserver.dto.PageDto;
 import com.kingbo.petserver.entity.Employee;
 import com.kingbo.petserver.entity.Shop;
 import com.kingbo.petserver.entity.ShopAuditLog;
+import com.kingbo.petserver.exception.ShopCheckException;
 import com.kingbo.petserver.myconst.MyPetHomeConst;
 import com.kingbo.petserver.service.EmployeeService;
 import com.kingbo.petserver.service.ShopService;
+import com.kingbo.petserver.utils.EmailUtil;
 import com.kingbo.petserver.vo.Result;
+import com.kingbo.petserver.vo.ShopStateEcharts;
 import com.kingbo.testMessage.TestMessage;
 import jakarta.annotation.Resource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.geo.Point;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -47,6 +54,15 @@ public class ShopServiceImpl implements ShopService {
     @Resource
     private ShopAuditLogDao shopAuditLogDao;
 
+    @Resource
+    private EmailUtil emailUtil;
+
+    @Resource
+    private MyImageCheckUtils imageCheckUtils;
+
+    @Resource
+    private MyContextCheckUtils contextCheckUtils;
+
     /**
      * 通过ID查询单条数据
      *
@@ -58,18 +74,13 @@ public class ShopServiceImpl implements ShopService {
         return this.shopDao.queryById(id);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param shop        筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
     @Override
-    public Page<Shop> queryByPage(Shop shop, PageRequest pageRequest) {
-        long total = this.shopDao.count(shop);
-        return new PageImpl<>(this.shopDao.queryAllByLimit(shop, pageRequest), pageRequest, total);
+    public Result<PageInfo<Shop>> queryByPage(PageDto pageDto) {
+        PageHelper.startPage(pageDto.getCurrentPage(),pageDto.getPageSize());
+        List<Shop> shops = shopDao.queryAllByLimit(pageDto.getKeyword());
+        return Result.success(new PageInfo<>(shops));
     }
+
 
     /**
      * 新增数据
@@ -90,9 +101,34 @@ public class ShopServiceImpl implements ShopService {
      * @return 实例对象
      */
     @Override
-    public Shop update(Shop shop) {
-        this.shopDao.update(shop);
-        return this.queryById(shop.getId());
+    @Transactional(rollbackFor = Exception.class)
+    public Result<String> update(Shop shop) throws Exception {
+        Shop originalShop = shopDao.queryById(shop.getId());
+        shop.setState(1);
+        if(shop.getAdmin() != null) {
+            //把原来管理的店铺管理人设置为 null
+            shopDao.updateAdminIdByAdminId(shop.getAdminId());
+            //修改员工的shop_id为 null
+            employeeService.updateShopIdNullById(shop.getAdminId());
+            //修改店铺管理人
+            shop.setAdminId(shop.getAdmin().getId());
+            //修改员工的shop_id
+            employeeService.updateShopIdById(shop.getAdminId(),shop.getId());
+        }
+        shopDao.update(shop);
+        ShopAuditLog log = new ShopAuditLog(null, 1, shop.getId(), null, null, "修改后需重新审核");
+        shopAuditLogDao.updateByShopId(log);
+        //自动审核
+        try {
+            check(log);
+            if(log.getState() == 4){
+                shopDao.update(originalShop);
+                return Result.failure("修改失败");
+            }
+        }catch (Exception e){
+            ShopCheckException.throwPetException("自动审核失败....");
+        }
+        return Result.success("修改成功");
     }
 
     /**
@@ -102,8 +138,14 @@ public class ShopServiceImpl implements ShopService {
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(Long id) {
-        return this.shopDao.deleteById(id) > 0;
+    public Result<String> deleteById(Long id) {
+        int i = shopDao.deleteById(id);
+        if(i > 0){
+            shopAuditLogDao.deleteByShopId(id);
+            employeeService.updateShopIdNullByShopId(id);
+            return Result.success("删除成功");
+        }
+        return Result.failure("删除失败");
     }
 
     @Override
@@ -148,8 +190,151 @@ public class ShopServiceImpl implements ShopService {
         log.setState(1);
         log.setShopId(shop.getId());
         shopAuditLogDao.insert(log);
-        return Result.success("入驻成功");
+        try {
+            check(log);
+        }catch (Exception e){
+            ShopCheckException.throwPetException("第1次审核失败....");
+        }
+        return Result.success("入驻申请成功，待审核");
     }
 
+    public Result<String> check(ShopAuditLog shopAuditLog) throws Exception {
+        Shop shop = shopDao.queryById(shopAuditLog.getShopId());
+
+        String r1 = imageCheckUtils.checkImage(shop.getLogo());
+        String r2 = contextCheckUtils.checkContext(Arrays.asList(shop.getAddress(), shop.getName()));
+
+        JSONArray s1 = (JSONArray) JSONPath.eval(r1, "$.body.Data.Results[0].SubResults.Suggestion");
+        JSONArray s2 = (JSONArray) com.alibaba.fastjson2.JSONPath.eval(r2, "$.body.Data.Elements.Results.Suggestion");
+
+        String eval = "pass";
+        if (s1 != null) {
+            for (Object r : s1) {
+                if(r.toString().equals("block")){
+                    eval = "block";
+                    break;
+                }else if(r.toString().equals("review")){
+                    eval = "review";
+                }
+            }
+        }
+        if(eval.equals("pass")){
+            if (s2 != null) {
+                for (Object r : s2) {
+                    if(r.toString().equals("block")){
+                        eval = "block";
+                        break;
+                    }else if(r.toString().equals("review")){
+                        eval = "review";
+                    }
+                }
+            }
+        }
+        switch (eval){
+            case "pass" ->{
+                shopAuditLog.setState(2);
+                shopAuditLog.setNote("阿里云自动审核成功");
+            }
+            case "review" ->{
+                shopAuditLog.setState(5);
+                shopAuditLog.setNote("阿里云自动审核不确定,需人工介入");
+            }
+            default -> {
+                shopAuditLog.setState(4);
+                shopAuditLog.setNote("阿里云自动审核拒绝");
+            }
+        }
+        // 在这个方法内修改状态
+        int i = updateStatus(shopAuditLog);
+        return i == 2 ? Result.success("审核成功") : Result.failure("审核失败");
+    }
+
+    @Override
+    @Transactional
+    public Result<String> pass(ShopAuditLog shopAuditLog) {
+        shopAuditLog.setState(2);
+        int i = updateStatus(shopAuditLog);
+        return Result.success("审核通过");
+    }
+
+    @Override
+    public Result<String> deleteByIds(List<Long> ids) {
+        int i = shopDao.deleteByIds(ids);
+        if(i > 0){
+            shopAuditLogDao.deleteByShopIds(ids);
+            employeeService.updateShopIdNullByShopIds(ids);
+            return Result.success("删除成功");
+        }
+        return Result.failure("删除失败");
+    }
+
+    @Override
+    public List<Shop> queryData() {
+        return shopDao.queryAllByLimit(null);
+    }
+
+    // 统计不同状态的店铺数量
+    @Override
+    public HashMap<String, List<?>> queryShopGroupState() {
+        // 调用Mapper分组统计不同状态的店铺数量
+        List<ShopStateEcharts> maps = shopDao.selectShopGroupState();
+        // 准备返回值
+        HashMap<String, List<?>> hashMap = new HashMap<>();
+        ArrayList<String> x = new ArrayList<>();
+        ArrayList<Integer> y = new ArrayList<>();
+        for (ShopStateEcharts map : maps) {
+            x.add(map.getStateDes());
+            y.add(map.getStateNum());
+        }
+
+        hashMap.put("states_x", x);
+        hashMap.put("num_y", y);
+        return hashMap;
+    }
+
+    @Override
+    public List<Map<String, Object>> queryShopGroupStateForPie() {
+        // 1. 复用 DAO 查出数据
+        List<ShopStateEcharts> list = shopDao.selectShopGroupState();
+
+        // 2. 转换格式为 ECharts 饼图专用: [{name: "待审核", value: 10}, ...]
+        List<Map<String, Object>> pieList = new ArrayList<>();
+
+        for (ShopStateEcharts item : list) {
+            Map<String, Object> dataMap = new HashMap<>();
+            dataMap.put("name", item.getStateDes()); // 名字
+            dataMap.put("value", item.getStateNum()); // 数值
+            pieList.add(dataMap);
+        }
+        return pieList;
+    }
+
+
+    @Override
+    @Transactional
+    public Result<String> reject(ShopAuditLog shopAuditLog) {
+        shopAuditLog.setState(4);
+        int i = updateStatus(shopAuditLog);
+        return Result.success("审核驳回");
+    }
+
+    @Transactional
+    public int updateStatus(ShopAuditLog shopAuditLog) {
+        shopAuditLog.setAuditTime(new Date());
+        // 判断,如果是 审核成功,修改状态之后,就发激活的邮件,否则就直接修改状态不发邮件
+        //更新shop状态
+        int i = shopDao.updateStateById(shopAuditLog.getState(), shopAuditLog.getShopId());
+        shopAuditLogDao.updateByShopId(shopAuditLog);
+        if(shopAuditLog.getState() == 2){
+            /*//发邮件
+            String to = employeeService.selectEmailByShopId(shopAuditLog.getShopId());
+            int code = RandomUtil.randomInt(6);
+            emailUtil.sendHtmlMail(to, "激活店铺", "<a href='http://localhost:8080/org/shop/check/active?id=" + shopAuditLog.getShopId() + "&code=" + code + "'>点击激活您的店铺</a>");
+            */return 2;
+        }else if(shopAuditLog.getState() == 4){
+            return 4;
+        }
+        return 0;
+    }
 
 }
